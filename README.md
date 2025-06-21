@@ -1,449 +1,272 @@
-# Rembg
+# Rembg Web Interface
 
-[![Downloads](https://img.shields.io/pypi/dm/rembg.svg)](https://img.shields.io/pypi/dm/rembg.svg)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://img.shields.io/badge/License-MIT-blue.svg)
-[![Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/KenjieDec/RemBG)
-[![Streamlit App](https://img.shields.io/badge/🎈%20Streamlit%20Community-Cloud-blue)](https://bgremoval.streamlit.app/)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/danielgatis/rembg/blob/main/rembg.ipynb)
+这是一个基于 Rembg 的现代化 Web 界面，提供直观易用的图像背景移除功能。
 
+## 🎯 功能特色
 
-Rembg is a tool to remove images background.
+- **多种 AI 模型**：支持 BiRefNet、U2Net、ISNet 等多种专业模型
+- **快速处理**：采用最新 AI 算法，秒级完成背景移除
+- **自定义背景**：支持透明、纯色等多种背景选项
+- **响应式设计**：完美适配桌面和移动设备
+- **高级选项**：Alpha 抠图、后处理优化等专业功能
+- **实时状态**：API 服务状态实时监控
 
-<p style="display: flex;align-items: center;justify-content: center;">
-  <img alt="example car-1" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-1.jpg" width="100" />
-  <img alt="example car-1.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-1.out.png" width="100" />
-  <img alt="example car-2" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-2.jpg" width="100" />
-  <img alt="example car-2.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-2.out.png" width="100" />
-  <img alt="example car-3" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-3.jpg" width="100" />
-  <img alt="example car-3.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/car-3.out.png" width="100" />
-</p>
+## 🚀 快速开始
 
-<p style="display: flex;align-items: center;justify-content: center;">
-  <img alt="example animal-1" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-1.jpg" width="100" />
-  <img alt="example animal-1.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-1.out.png" width="100" />
-  <img alt="example animal-2" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-2.jpg" width="100" />
-  <img alt="example animal-2.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-2.out.png" width="100" />
-  <img alt="example animal-3" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-3.jpg" width="100" />
-  <img alt="example animal-3.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/animal-3.out.png" width="100" />
-</p>
+### 方式一：本地开发
 
-<p style="display: flex;align-items: center;justify-content: center;">
-  <img alt="example girl-1" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-1.jpg" width="100" />
-  <img alt="example girl-1.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-1.out.png" width="100" />
-  <img alt="example girl-2" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-2.jpg" width="100" />
-  <img alt="example girl-2.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-2.out.png" width="100" />
-  <img alt="example girl-3" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-3.jpg" width="100" />
-  <img alt="example girl-3.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/girl-3.out.png" width="100" />
-</p>
+1. **启动 Rembg 后端服务**：
+```bash
+# 安装 Rembg
+pip install "rembg[cpu,cli]"
 
-<p style="display: flex;align-items: center;justify-content: center;">
-  <img alt="example anime-girl-1" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-1.jpg" width="100" />
-  <img alt="example anime-girl-1.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-1.out.png" width="100" />
-  <img alt="example anime-girl-2" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-2.jpg" width="100" />
-  <img alt="example anime-girl-2.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-2.out.png" width="100" />
-  <img alt="example anime-girl-3" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-3.jpg" width="100" />
-  <img alt="example anime-girl-3.out" src="https://raw.githubusercontent.com/danielgatis/rembg/master/examples/anime-girl-3.out.png" width="100" />
-</p>
-
-**If this project has helped you, please consider making a [donation](https://www.buymeacoffee.com/danielgatis).**
-
-## Sponsors
-
-<table>
-  <tr>
-    <td align="center" vertical-align="center">
-      <a href="https://withoutbg.com/?utm_source=rembg&utm_medium=github_readme&utm_campaign=sponsorship" >
-        <img src="https://withoutbg.com/images/logo-social.png" width="120px;" alt="withoutBG API Logo" />
-      </a>
-    </td>
-    <td align="center" vertical-align="center">
-      <b>withoutBG API</b>
-      <br />
-      <a href="https://withoutbg.com/?utm_source=rembg&utm_medium=github_readme&utm_campaign=sponsorship">https://withoutbg.com</a>
-      <br />
-      <p width="200px">
-      High-quality background removal API at affordable rates
-        <br/>
-      </p>
-    </td>
-  </tr>
- <tr>
-    <td align="center" vertical-align="center">
-      <a href="https://photoroom.com/api/remove-background?utm_source=rembg&utm_medium=github_webpage&utm_campaign=sponsor" >
-        <img src="https://font-cdn.photoroom.com/media/api-logo.png" width="120px;" alt="Unsplash" />
-      </a>
-    </td>
-    <td align="center" vertical-align="center">
-      <b>PhotoRoom Remove Background API</b>
-      <br />
-      <a href="https://photoroom.com/api/remove-background?utm_source=rembg&utm_medium=github_webpage&utm_campaign=sponsor">https://photoroom.com/api</a>
-      <br />
-      <p width="200px">
-        Fast and accurate background remover API<br/>
-      </p>
-    </td>
-  </tr>
-</table>
-
-## Requirements
-
-```text
-python: >=3.10, <3.14
+# 启动 API 服务
+rembg s --host 0.0.0.0 --port 7000
 ```
 
-## Installation
+2. **启动前端界面**：
+```bash
+# 安装依赖
+npm install
 
-If you have `onnxruntime` already installed, just install `rembg`:
+# 启动开发服务器
+npm run dev
+```
+
+3. **访问应用**：
+   - Web 界面: http://localhost:3000
+   - API 文档: http://localhost:7000/api
+
+### 方式二：Docker 部署
+
+1. **使用 Docker Compose**：
+```bash
+# 启动所有服务
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+```
+
+2. **访问应用**：
+   - Web 界面: http://localhost:3000
+   - API 服务: http://localhost:7000
+
+### 方式三：生产部署
+
+1. **构建前端**：
+```bash
+npm run build
+```
+
+2. **部署到 Nginx**：
+```bash
+# 复制构建文件到 Nginx 目录
+cp -r dist/* /var/www/html/
+
+# 配置 Nginx 代理（参考 nginx.conf）
+```
+
+## 📋 系统要求
+
+### 最低要求
+- Python 3.10+
+- Node.js 18+
+- 2GB RAM
+- 1GB 磁盘空间
+
+### 推荐配置
+- Python 3.11+
+- Node.js 20+
+- 8GB RAM
+- NVIDIA GPU（可选，用于加速）
+- 5GB 磁盘空间
+
+## 🔧 配置说明
+
+### 环境变量
 
 ```bash
-pip install rembg # for library
-pip install "rembg[cli]" # for library + cli
+# Rembg 配置
+MODEL_CHECKSUM_DISABLED=1  # 禁用模型校验（可选）
+U2NET_HOME=/path/to/models # 模型存储路径（可选）
+
+# 前端配置
+VITE_API_URL=http://localhost:7000  # API 服务地址
 ```
 
-Otherwise, install `rembg` with explicit CPU/GPU support.
+### Nginx 配置
 
-### CPU support:
+参考 `nginx.conf` 文件，主要配置：
+- 前端静态文件服务
+- API 请求代理
+- 文件上传大小限制
+- 超时时间设置
+
+## 🎨 支持的模型
+
+| 模型名称 | 适用场景 | 特点 |
+|---------|---------|------|
+| birefnet-general | 通用场景 | 高质量，推荐使用 |
+| birefnet-portrait | 人像处理 | 专门优化人像效果 |
+| birefnet-general-lite | 通用场景 | 轻量版，速度快 |
+| u2net | 通用场景 | 经典模型，兼容性好 |
+| u2netp | 通用场景 | 轻量版 U2Net |
+| isnet-general-use | 通用场景 | 高精度处理 |
+| isnet-anime | 动漫角色 | 专门处理动漫图像 |
+| sam | 通用场景 | Segment Anything Model |
+| silueta | 小文件 | 模型体积小 |
+
+## 🔌 API 接口
+
+### 移除背景
+```http
+POST /api/remove
+Content-Type: multipart/form-data
+
+参数：
+- file: 图片文件
+- model: 模型名称（可选，默认 u2net）
+- a: 是否启用 Alpha 抠图（可选）
+- om: 是否仅输出蒙版（可选）
+- ppm: 是否后处理（可选）
+- bgc: 背景颜色（可选，格式：R,G,B,A）
+```
+
+### 从 URL 移除背景
+```http
+GET /api/remove?url=图片URL&model=模型名称
+```
+
+## 🚀 GPU 加速
+
+如果有 NVIDIA GPU，可以安装 GPU 版本以获得更快的处理速度：
 
 ```bash
-pip install rembg[cpu] # for library
-pip install "rembg[cpu,cli]" # for library + cli
+# 安装 GPU 版本
+pip install "rembg[gpu,cli]"
+
+# 检查 CUDA 是否可用
+python -c "import torch; print(torch.cuda.is_available())"
 ```
 
-### GPU support (NVidia/Cuda):
+## 🛠️ 开发指南
 
-First of all, you need to check if your system supports the `onnxruntime-gpu`.
+### 项目结构
+```
+├── src/
+│   ├── App.tsx          # 主应用组件
+│   ├── main.tsx         # 应用入口
+│   └── index.css        # 全局样式
+├── public/              # 静态资源
+├── docker-compose.yml   # Docker 配置
+├── nginx.conf          # Nginx 配置
+└── deploy.sh           # 部署脚本
+```
 
-Go to [onnxruntime.ai](<https://onnxruntime.ai/getting-started>) and check the installation matrix.
-
-<p style="display: flex;align-items: center;justify-content: center;">
-  <img alt="onnxruntime-installation-matrix" src="https://raw.githubusercontent.com/danielgatis/rembg/master/onnxruntime-installation-matrix.png" width="400" />
-</p>
-
-If yes, just run:
-
+### 本地开发
 ```bash
-pip install "rembg[gpu]" # for library
-pip install "rembg[gpu,cli]" # for library + cli
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 构建生产版本
+npm run build
+
+# 预览构建结果
+npm run preview
 ```
 
-Nvidia GPU may require onnxruntime-gpu, cuda, and cudnn-devel. [#668](https://github.com/danielgatis/rembg/issues/668#issuecomment-2689830314) . If rembg[gpu] doesn't work and you can't install cuda or cudnn-devel, use rembg[cpu] and onnxruntime instead.
+### 代码规范
+- 使用 TypeScript 进行类型检查
+- 使用 Tailwind CSS 进行样式管理
+- 遵循 React Hooks 最佳实践
+- 使用 ESLint 进行代码检查
 
-### GPU support (AMD/ROCM):
+## 🐳 Docker 部署
 
-ROCM support requires the `onnxruntime-rocm` package. Install it following
-[AMD's documentation](https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-onnx.html).
-
-If `onnxruntime-rocm` is installed and working, install the `rembg[rocm]`
-version of rembg:
-
+### 单独部署前端
 ```bash
-pip install "rembg[rocm]" # for library
-pip install "rembg[rocm,cli]" # for library + cli
+# 构建镜像
+docker build -t rembg-web .
+
+# 运行容器
+docker run -p 3000:80 rembg-web
 ```
 
-## Usage as a cli
+### 完整部署（前端+后端）
+```bash
+# 启动所有服务
+docker-compose up -d
 
-After the installation step you can use rembg just typing `rembg` in your terminal window.
+# 查看日志
+docker-compose logs -f
 
-The `rembg` command has 4 subcommands, one for each input type:
-
-- `i` for files
-- `p` for folders
-- `s` for http server
-- `b` for RGB24 pixel binary stream
-
-You can get help about the main command using:
-
-```shell
-rembg --help
+# 停止服务
+docker-compose down
 ```
 
-As well, about all the subcommands using:
+## 🔍 故障排除
 
-```shell
-rembg <COMMAND> --help
+### 常见问题
+
+1. **API 服务不可用**
+   - 检查 Rembg 服务是否启动
+   - 确认端口 7000 未被占用
+   - 检查防火墙设置
+
+2. **模型下载失败**
+   - 检查网络连接
+   - 设置 `MODEL_CHECKSUM_DISABLED=1`
+   - 手动下载模型文件
+
+3. **内存不足**
+   - 使用轻量版模型（u2netp, birefnet-general-lite）
+   - 增加系统内存
+   - 调整图片尺寸
+
+4. **处理速度慢**
+   - 使用 GPU 版本
+   - 选择更快的模型
+   - 减小图片尺寸
+
+### 日志查看
+```bash
+# Docker 日志
+docker-compose logs rembg-api
+docker-compose logs rembg-web
+
+# 系统日志
+journalctl -u rembg-service
 ```
 
-### rembg `i`
+## 📄 许可证
 
-Used when input and output are files.
+本项目基于 MIT 许可证开源。原始 Rembg 项目同样采用 MIT 许可证。
 
-Remove the background from a remote image
+## 🤝 贡献
 
-```shell
-curl -s http://input.png | rembg i > output.png
-```
+欢迎提交 Issue 和 Pull Request 来改进这个项目。
 
-Remove the background from a local file
+### 贡献指南
+1. Fork 项目
+2. 创建功能分支
+3. 提交更改
+4. 推送到分支
+5. 创建 Pull Request
 
-```shell
-rembg i path/to/input.png path/to/output.png
-```
+## 🔗 相关链接
 
-Remove the background specifying a model
+- [Rembg 原始项目](https://github.com/danielgatis/rembg)
+- [在线演示](https://huggingface.co/spaces/KenjieDec/RemBG)
+- [API 文档](http://localhost:7000/api)
+- [问题反馈](https://github.com/danielgatis/rembg/issues)
 
-```shell
-rembg i -m u2netp path/to/input.png path/to/output.png
-```
+## 📞 支持
 
-Remove the background returning only the mask
-
-```shell
-rembg i -om path/to/input.png path/to/output.png
-```
-
-Remove the background applying an alpha matting
-
-```shell
-rembg i -a path/to/input.png path/to/output.png
-```
-
-Passing extras parameters
-
-```shell
-SAM example
-
-rembg i -m sam -x '{ "sam_prompt": [{"type": "point", "data": [724, 740], "label": 1}] }' examples/plants-1.jpg examples/plants-1.out.png
-```
-
-```shell
-Custom model example
-
-rembg i -m u2net_custom -x '{"model_path": "~/.u2net/u2net.onnx"}' path/to/input.png path/to/output.png
-```
-
-### rembg `p`
-
-Used when input and output are folders.
-
-Remove the background from all images in a folder
-
-```shell
-rembg p path/to/input path/to/output
-```
-
-Same as before, but watching for new/changed files to process
-
-```shell
-rembg p -w path/to/input path/to/output
-```
-
-### rembg `s`
-
-Used to start http server.
-
-```shell
-rembg s --host 0.0.0.0 --port 7000 --log_level info
-```
-
-To see the complete endpoints documentation, go to: `http://localhost:7000/api`.
-
-Remove the background from an image url
-
-```shell
-curl -s "http://localhost:7000/api/remove?url=http://input.png" -o output.png
-```
-
-Remove the background from an uploaded image
-
-```shell
-curl -s -F file=@/path/to/input.jpg "http://localhost:7000/api/remove"  -o output.png
-```
-
-### rembg `b`
-
-Process a sequence of RGB24 images from stdin. This is intended to be used with another program, such as FFMPEG, that outputs RGB24 pixel data to stdout, which is piped into the stdin of this program, although nothing prevents you from manually typing in images at stdin.
-
-```shell
-rembg b image_width image_height -o output_specifier
-```
-
-Arguments:
-
-- image_width : width of input image(s)
-- image_height : height of input image(s)
-- output_specifier: printf-style specifier for output filenames, for example if `output-%03u.png`, then output files will be named `output-000.png`, `output-001.png`, `output-002.png`, etc. Output files will be saved in PNG format regardless of the extension specified. You can omit it to write results to stdout.
-
-Example usage with FFMPEG:
-
-```shell
-ffmpeg -i input.mp4 -ss 10 -an -f rawvideo -pix_fmt rgb24 pipe:1 | rembg b 1280 720 -o folder/output-%03u.png
-```
-
-The width and height values must match the dimension of output images from FFMPEG. Note for FFMPEG, the "`-an -f rawvideo -pix_fmt rgb24 pipe:1`" part is required for the whole thing to work.
-
-## Usage as a library
-
-Input and output as bytes
-
-```python
-from rembg import remove
-
-input_path = 'input.png'
-output_path = 'output.png'
-
-with open(input_path, 'rb') as i:
-    with open(output_path, 'wb') as o:
-        input = i.read()
-        output = remove(input)
-        o.write(output)
-```
-
-Input and output as a PIL image
-
-```python
-from rembg import remove
-from PIL import Image
-
-input_path = 'input.png'
-output_path = 'output.png'
-
-input = Image.open(input_path)
-output = remove(input)
-output.save(output_path)
-```
-
-Input and output as a numpy array
-
-```python
-from rembg import remove
-import cv2
-
-input_path = 'input.png'
-output_path = 'output.png'
-
-input = cv2.imread(input_path)
-output = remove(input)
-cv2.imwrite(output_path, output)
-```
-
-Force output as bytes
-
-```python
-from rembg import remove
-
-input_path = 'input.png'
-output_path = 'output.png'
-
-with open(input_path, 'rb') as i:
-    with open(output_path, 'wb') as o:
-        input = i.read()
-        output = remove(input, force_return_bytes=True)
-        o.write(output)
-```
-
-How to iterate over files in a performatic way
-
-```python
-from pathlib import Path
-from rembg import remove, new_session
-
-session = new_session()
-
-for file in Path('path/to/folder').glob('*.png'):
-    input_path = str(file)
-    output_path = str(file.parent / (file.stem + ".out.png"))
-
-    with open(input_path, 'rb') as i:
-        with open(output_path, 'wb') as o:
-            input = i.read()
-            output = remove(input, session=session)
-            o.write(output)
-```
-
-To see a full list of examples on how to use rembg, go to the [examples](USAGE.md) page.
-
-## Usage as a docker
-
-### Only CPU
-
-Just replace the `rembg` command for `docker run danielgatis/rembg`.
-
-Try this:
-
-```shell
-docker run -v path/to/input:/rembg danielgatis/rembg i input.png path/to/output/output.png
-```
-
-### Nvidia CUDA Hardware Acceleration
-
-Requirement: using CUDA in docker needs your **host** has **NVIDIA Container Toolkit** installed. [NVIDIA Container Toolkit Install Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
-
-**Nvidia CUDA Hardware Acceleration** needs cudnn-devel so you need to build the docker image by yourself. [#668](https://github.com/danielgatis/rembg/issues/668#issuecomment-2689914205)
-
-Here is a example shows you how to build an image and name it *rembg-nvidia-cuda-cudnn-gpu*
-```shell
-docker build -t rembg-nvidia-cuda-cudnn-gpu -f Dockerfile_nvidia_cuda_cudnn_gpu .
-```
-Be aware: It would take 11GB of your disk space. (The cpu version only takes about 1.6GB). Models didn't included.
-
-After you build the image, run it like this as a cli
-```shell
-sudo docker run --rm -it --gpus all -v /dev/dri:/dev/dri -v $PWD:/rembg rembg-nvidia-cuda-cudnn-gpu i -m birefnet-general input.png output.png
-```
-
-- Trick 1: Actually you can also make up a nvidia-cuda-cudnn-gpu image and install rembg[gpu, cli] in it.
-- Trick 2: Try param `-v /somewhereYouStoresModelFiles/:/root/.u2net` so to download/store model files out of docker images. You can even comment the line `RUN rembg d u2net` so when builing the image, it download will no models, so you can download the specific model you want even without the default u2net model.
-
-## Models
-
-All models are downloaded and saved in the user home folder in the `.u2net` directory.
-
-The available models are:
-
-- u2net ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx), [source](https://github.com/xuebinqin/U-2-Net)): A pre-trained model for general use cases.
-- u2netp ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx), [source](https://github.com/xuebinqin/U-2-Net)): A lightweight version of u2net model.
-- u2net_human_seg ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx), [source](https://github.com/xuebinqin/U-2-Net)): A pre-trained model for human segmentation.
-- u2net_cloth_seg ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_cloth_seg.onnx), [source](https://github.com/levindabhi/cloth-segmentation)): A pre-trained model for Cloths Parsing from human portrait. Here clothes are parsed into 3 category: Upper body, Lower body and Full body.
-- silueta ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/silueta.onnx), [source](https://github.com/xuebinqin/U-2-Net/issues/295)): Same as u2net but the size is reduced to 43Mb.
-- isnet-general-use ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx), [source](https://github.com/xuebinqin/DIS)): A new pre-trained model for general use cases.
-- isnet-anime ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-anime.onnx), [source](https://github.com/SkyTNT/anime-segmentation)): A high-accuracy segmentation for anime character.
-- sam ([download encoder](https://github.com/danielgatis/rembg/releases/download/v0.0.0/vit_b-encoder-quant.onnx), [download decoder](https://github.com/danielgatis/rembg/releases/download/v0.0.0/vit_b-decoder-quant.onnx), [source](https://github.com/facebookresearch/segment-anything)): A pre-trained model for any use cases.
-- birefnet-general ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-general-epoch_244.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model for general use cases.
-- birefnet-general-lite ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-general-bb_swin_v1_tiny-epoch_232.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A light pre-trained model for general use cases.
-- birefnet-portrait ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-portrait-epoch_150.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model for human portraits.
-- birefnet-dis ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-DIS-epoch_590.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model for dichotomous image segmentation (DIS).
-- birefnet-hrsod ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-HRSOD_DHU-epoch_115.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model for high-resolution salient object detection (HRSOD).
-- birefnet-cod ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-COD-epoch_125.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model for concealed object detection (COD).
-- birefnet-massive ([download](https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-massive-TR_DIS5K_TR_TEs-epoch_420.onnx), [source](https://github.com/ZhengPeng7/BiRefNet)): A pre-trained model with massive dataset.
-- ben2-base ([download](https://huggingface.co/PramaLLC/BEN2/resolve/main/BEN2_Base.onnx), [source](https://huggingface.co/PramaLLC/BEN2)): Introduces a novel approach to foreground segmentation through its innovative Confidence Guided Matting (CGM) pipeline.
-
-### How to train your own model
-
-If You need more fine tuned models try this:
-<https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289>
-
-## Some video tutorials
-
-- <https://www.youtube.com/watch?v=3xqwpXjxyMQ>
-- <https://www.youtube.com/watch?v=dFKRGXdkGJU>
-- <https://www.youtube.com/watch?v=Ai-BS_T7yjE>
-- <https://www.youtube.com/watch?v=D7W-C0urVcQ>
-
-## References
-
-- <https://arxiv.org/pdf/2005.09007.pdf>
-- <https://github.com/NathanUA/U-2-Net>
-- <https://github.com/pymatting/pymatting>
-
-## FAQ
-
-### When will this library provide support for Python version 3.xx?
-
-This library directly depends on the [onnxruntime](https://pypi.org/project/onnxruntime) library. Therefore, we can only update the Python version when [onnxruntime](https://pypi.org/project/onnxruntime) provides support for that specific version.
-
-## Buy me a coffee
-
-Liked some of my work? Buy me a coffee (or more likely a beer)
-
-<a href="https://www.buymeacoffee.com/danielgatis" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;"></a>
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=danielgatis/rembg&type=Date)](https://star-history.com/#danielgatis/rembg&Date)
-
-## License
-
-Copyright (c) 2020-present [Daniel Gatis](https://github.com/danielgatis)
-
-Licensed under [MIT License](./LICENSE.txt)
+如果您在使用过程中遇到问题，可以：
+- 查看 [FAQ 文档](https://github.com/danielgatis/rembg#faq)
+- 提交 [Issue](https://github.com/danielgatis/rembg/issues)
+- 参考 [官方文档](https://github.com/danielgatis/rembg)
