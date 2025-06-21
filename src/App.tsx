@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Upload, Download, Sparkles, Zap, Image as ImageIcon, Settings, Github, Heart, AlertCircle } from 'lucide-react';
+import { Upload, Download, Sparkles, Zap, Image as ImageIcon, Settings, Github, Heart, AlertCircle, ExternalLink } from 'lucide-react';
 
 interface ProcessingOptions {
   model: string;
@@ -146,7 +146,11 @@ const App: React.FC = () => {
     document.body.removeChild(link);
   };
 
-  const startLocalServer = () => {
+  const openGithubRepo = () => {
+    window.open('https://github.com/danielgatis/rembg', '_blank');
+  };
+
+  const openLocalSetupGuide = () => {
     window.open('https://github.com/danielgatis/rembg#installation', '_blank');
   };
 
@@ -187,47 +191,93 @@ const App: React.FC = () => {
               >
                 <Settings className="w-5 h-5" />
               </button>
-              <a
-                href="https://github.com/danielgatis/rembg"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={openGithubRepo}
                 className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <Github className="w-5 h-5" />
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* API 不可用提示 */}
-        {apiStatus === 'unavailable' && (
-          <div className="mb-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <div className="flex items-start space-x-3">
-              <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
-              <div className="flex-1">
-                <h3 className="text-sm font-medium text-yellow-800">Rembg API 服务未启动</h3>
-                <p className="text-sm text-yellow-700 mt-1">
-                  要使用背景移除功能，您需要先启动 Rembg 后端服务。请按照以下步骤操作：
-                </p>
-                <div className="mt-3 text-sm text-yellow-700">
-                  <ol className="list-decimal list-inside space-y-1">
-                    <li>安装 Rembg: <code className="bg-yellow-100 px-1 rounded">pip install "rembg[cpu,cli]"</code></li>
-                    <li>启动服务: <code className="bg-yellow-100 px-1 rounded">rembg s --host 0.0.0.0 --port 7000</code></li>
-                    <li>刷新此页面</li>
-                  </ol>
+        {/* WebContainer 环境提示 */}
+        <div className="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="flex items-start space-x-3">
+            <AlertCircle className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-blue-800 mb-2">在线演示环境说明</h3>
+              <p className="text-blue-700 mb-4">
+                您当前正在浏览器环境中查看此应用的前端界面。由于技术限制，无法在此环境中运行 Python 后端服务。
+              </p>
+              
+              <div className="bg-blue-100 rounded-lg p-4 mb-4">
+                <h4 className="font-semibold text-blue-800 mb-2">要体验完整功能，请选择以下方式之一：</h4>
+                <div className="space-y-3 text-sm text-blue-700">
+                  <div className="flex items-start space-x-2">
+                    <span className="font-semibold text-blue-800 mt-0.5">1.</span>
+                    <div>
+                      <strong>本地部署：</strong>
+                      <div className="mt-1 space-y-1">
+                        <div>• 安装 Python 和 Rembg: <code className="bg-blue-200 px-1 rounded text-xs">pip install "rembg[cpu,cli]"</code></div>
+                        <div>• 启动后端服务: <code className="bg-blue-200 px-1 rounded text-xs">rembg s --host 0.0.0.0 --port 7000</code></div>
+                        <div>• 下载此项目代码并运行前端</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-2">
+                    <span className="font-semibold text-blue-800 mt-0.5">2.</span>
+                    <div>
+                      <strong>Docker 部署：</strong>
+                      <div className="mt-1">
+                        使用项目中的 <code className="bg-blue-200 px-1 rounded text-xs">docker-compose.yml</code> 一键启动完整服务
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-2">
+                    <span className="font-semibold text-blue-800 mt-0.5">3.</span>
+                    <div>
+                      <strong>在线体验：</strong>
+                      <div className="mt-1">
+                        访问 <a href="https://huggingface.co/spaces/KenjieDec/RemBG" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Hugging Face 在线演示</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-3">
                 <button
-                  onClick={startLocalServer}
-                  className="mt-3 text-sm bg-yellow-600 text-white px-3 py-1 rounded hover:bg-yellow-700 transition-colors"
+                  onClick={openLocalSetupGuide}
+                  className="inline-flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
                 >
-                  查看安装说明
+                  <ExternalLink className="w-4 h-4" />
+                  <span>查看安装指南</span>
                 </button>
+                <button
+                  onClick={openGithubRepo}
+                  className="inline-flex items-center space-x-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>获取源码</span>
+                </button>
+                <a
+                  href="https://huggingface.co/spaces/KenjieDec/RemBG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>在线体验</span>
+                </a>
               </div>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Hero Section */}
         <div className="text-center mb-12">
@@ -270,6 +320,7 @@ const App: React.FC = () => {
                       value={options.model}
                       onChange={(e) => setOptions(prev => ({ ...prev, model: e.target.value }))}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={apiStatus !== 'available'}
                     >
                       {models.map(model => (
                         <option key={model.value} value={model.value}>
@@ -291,7 +342,8 @@ const App: React.FC = () => {
                         <button
                           key={bg.value}
                           onClick={() => setOptions(prev => ({ ...prev, backgroundColor: bg.value }))}
-                          className={`p-3 rounded-lg border-2 text-xs font-medium transition-all ${
+                          disabled={apiStatus !== 'available'}
+                          className={`p-3 rounded-lg border-2 text-xs font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
                             options.backgroundColor === bg.value
                               ? 'border-blue-500 bg-blue-50 text-blue-700'
                               : 'border-gray-200 hover:border-gray-300'
@@ -319,7 +371,8 @@ const App: React.FC = () => {
                         type="checkbox"
                         checked={options.alphaMatting}
                         onChange={(e) => setOptions(prev => ({ ...prev, alphaMatting: e.target.checked }))}
-                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        disabled={apiStatus !== 'available'}
+                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                       />
                       <span className="text-sm text-gray-700">Alpha 抠图</span>
                     </label>
@@ -329,7 +382,8 @@ const App: React.FC = () => {
                         type="checkbox"
                         checked={options.onlyMask}
                         onChange={(e) => setOptions(prev => ({ ...prev, onlyMask: e.target.checked }))}
-                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        disabled={apiStatus !== 'available'}
+                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                       />
                       <span className="text-sm text-gray-700">仅输出蒙版</span>
                     </label>
@@ -339,7 +393,8 @@ const App: React.FC = () => {
                         type="checkbox"
                         checked={options.postProcessMask}
                         onChange={(e) => setOptions(prev => ({ ...prev, postProcessMask: e.target.checked }))}
-                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        disabled={apiStatus !== 'available'}
+                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                       />
                       <span className="text-sm text-gray-700">后处理优化</span>
                     </label>
@@ -420,7 +475,7 @@ const App: React.FC = () => {
                       ) : apiStatus !== 'available' ? (
                         <div className="flex items-center justify-center space-x-2">
                           <AlertCircle className="w-4 h-4" />
-                          <span>API 服务不可用</span>
+                          <span>需要启动后端服务</span>
                         </div>
                       ) : (
                         <div className="flex items-center justify-center space-x-2">
@@ -479,6 +534,11 @@ const App: React.FC = () => {
                       <p className="text-gray-500">
                         {isProcessing ? '正在处理中...' : '处理后的图片将显示在这里'}
                       </p>
+                      {apiStatus !== 'available' && (
+                        <p className="text-sm text-gray-400 mt-2">
+                          需要启动 Rembg 后端服务才能处理图片
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>
